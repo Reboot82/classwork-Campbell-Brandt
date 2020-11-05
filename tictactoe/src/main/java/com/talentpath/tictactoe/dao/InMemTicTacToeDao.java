@@ -77,22 +77,12 @@ public class InMemTicTacToeDao implements TicTacToeDao {
     }
 
     @Override
-    public List<Integer> getXMovesForGame(Integer gameId){
+    public List<Integer> getMovesForGame(Integer gameId){
         return allGames.get(gameId).getGuessesX();
     }
 
     @Override
-    public List<Integer> getOMovesForGame(Integer gameId){
-        return allGames.get(gameId).getGuessesO();
-    }
-
-    @Override
-    public void addXGuess(TicTacToeGuess xGuess) {
-
-    }
-
-    @Override
-    public void addOGuess(TicTacToeGuess oGuess) {
+    public void addMove(TicTacToeGuess move) {
 
     }
 

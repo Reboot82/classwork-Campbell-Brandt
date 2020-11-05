@@ -6,6 +6,15 @@ public class TicTacToeBoard {
     Integer gameId;
     List<Integer> guessesX;
     List<Integer> guessesO;
+    Integer moves;
+
+    public Integer getMoves() {
+        return moves;
+    }
+
+    public void setMoves(Integer moves) {
+        this.moves = moves;
+    }
 
     public Integer getGameId() {
         return gameId;

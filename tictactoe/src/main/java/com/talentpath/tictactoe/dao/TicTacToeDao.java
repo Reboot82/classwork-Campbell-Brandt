@@ -1,5 +1,6 @@
 package com.talentpath.tictactoe.dao;
 
+import com.talentpath.tictactoe.exceptions.InvalidIdException;
 import com.talentpath.tictactoe.models.TicTacToeBoard;
 import com.talentpath.tictactoe.models.TicTacToeGuess;
 
@@ -11,13 +12,11 @@ public interface TicTacToeDao {
     List<Integer> getAllPossibleMoves();
 
     TicTacToeBoard addGame(TicTacToeBoard toAdd);
-    TicTacToeBoard getGameById(Integer gameId);
+    TicTacToeBoard getGameById(Integer gameId) throws InvalidIdException;
 
     void reset();
 
-    List<Integer> getXMovesForGame(Integer gameId);
-    List<Integer> getOMovesForGame(Integer gameId);
+    List<Integer> getMovesForGame(Integer gameId);
 
-    void addXGuess(TicTacToeGuess xGuess);
-    void addOGuess(TicTacToeGuess oGuess);
+    void addMove(TicTacToeGuess move);
 }
