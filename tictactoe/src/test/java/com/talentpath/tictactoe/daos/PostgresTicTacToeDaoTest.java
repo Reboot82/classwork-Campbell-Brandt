@@ -1,21 +1,34 @@
 package com.talentpath.tictactoe.daos;
 
-import java.util.Scanner;
+import com.talentpath.tictactoe.dao.PostgresTicTacToeDao;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
+@ActiveProfiles("daotesting")
 public class PostgresTicTacToeDaoTest {
-    private static Scanner scanner = new Scanner(System.in);
 
-    public PostgresTicTacToeDaoTest() {
+    @Autowired
+    PostgresTicTacToeDao daoToTest;
+
+    @Autowired
+    JdbcTemplate template;
+
+    @BeforeEach
+    void setUp() {
+        daoToTest.reset();
     }
 
-    public static void main(String[] args) {
+    @Test
+    void getAllGames() {
+
     }
 
-    private static void print(Object o) {
-        System.out.print(o);
-    }
-
-    private static void println(Object o) {
-        System.out.println(o);
-    }
 }

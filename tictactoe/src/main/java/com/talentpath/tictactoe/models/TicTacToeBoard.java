@@ -4,16 +4,24 @@ import java.util.List;
 
 public class TicTacToeBoard {
     Integer gameId;
-    List<Integer> guessesX;
-    List<Integer> guessesO;
-    Integer moves;
+    List<TicTacToeMove> moves;
+    Boolean isGameOver;
+    String winner;
 
-    public Integer getMoves() {
-        return moves;
+    public String getWinner() {
+        return winner;
     }
 
-    public void setMoves(Integer moves) {
-        this.moves = moves;
+    public void setWinner(String winner) {
+        this.winner = winner;
+    }
+
+    public Boolean getGameOver() {
+        return isGameOver;
+    }
+
+    public void setGameOver(Boolean gameOver) {
+        isGameOver = gameOver;
     }
 
     public Integer getGameId() {
@@ -24,19 +32,12 @@ public class TicTacToeBoard {
         this.gameId = gameId;
     }
 
-    public List<Integer> getGuessesX() {
-        return guessesX;
+    public List<TicTacToeMove> getMoves() {
+        return moves;
     }
 
-    public void setGuessesX(List<Integer> guessesX) {
-        this.guessesX = guessesX;
+    public void setMoves(List<TicTacToeMove> moves) {
+        this.moves = moves;
     }
 
-    public List<Integer> getGuessesO() {
-        return guessesO;
-    }
-
-    public void setGuessesO(List<Integer> guessesO) {
-        this.guessesO = guessesO;
-    }
 }

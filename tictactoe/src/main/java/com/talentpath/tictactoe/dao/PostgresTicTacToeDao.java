@@ -2,7 +2,7 @@ package com.talentpath.tictactoe.dao;
 
 import com.talentpath.tictactoe.exceptions.InvalidIdException;
 import com.talentpath.tictactoe.models.TicTacToeBoard;
-import com.talentpath.tictactoe.models.TicTacToeGuess;
+import com.talentpath.tictactoe.models.TicTacToeMove;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.dao.DataAccessException;
@@ -36,14 +36,12 @@ public class PostgresTicTacToeDao implements TicTacToeDao{
 
     @Override
     public TicTacToeBoard addGame(TicTacToeBoard toAdd) {
-        List<Integer> insertedIds = template.query(
-                "INSERT INTO \"Games\" (\"possibleMoves\") " +
-                        "VALUES ('"+toAdd.getMoves()+"') returning \"gameId\";", new IdMapper() );
+        Integer insertedId = template.queryForObject(
+                "INSERT INTO \"Games\" (\"isGameOver\") " +
+                        "VALUES ('false') RETURNING \"gameId\"", new IdMapper() );
 
 
-
-
-        toAdd.setGameId( insertedIds.get(0));
+        toAdd.setGameId( insertedId );
 
         return toAdd;
     }
@@ -70,28 +68,20 @@ public class PostgresTicTacToeDao implements TicTacToeDao{
     }
 
     @Override
-    public List<Integer> getMovesForGame(Integer gameId) {
-        return template.query(
-                "SELECT \"move\" FROM \"Moves\" WHERE \"gameId\" = '"+gameId+"' ",
-                new MoveMapper());
+    public List<TicTacToeMove> getMovesForGame(Integer gameId) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void addMove(TicTacToeGuess move) {
-
+    public void addMove(TicTacToeMove move) {
+        throw new UnsupportedOperationException();
     }
 
     class GameMapper implements RowMapper<TicTacToeBoard> {
 
         @Override
         public TicTacToeBoard mapRow(ResultSet resultSet, int i) throws SQLException {
-            TicTacToeBoard toReturn = new TicTacToeBoard();
-            toReturn.setGameId(resultSet.getInt("gameId"));
-            toReturn.setMoves(resultSet.getInt("moves"));
-            toReturn.setGuessesO((List<Integer>) resultSet.getArray("guessesO"));
-            toReturn.setGuessesX((List<Integer>) resultSet.getArray("guessesX"));
-
-            return toReturn;
+            throw new UnsupportedOperationException();
         }
     }
 
